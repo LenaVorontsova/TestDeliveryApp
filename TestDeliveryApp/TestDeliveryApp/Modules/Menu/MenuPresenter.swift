@@ -18,7 +18,7 @@ protocol MenuPresenting: AnyObject {
 final class MenuPresenter: MenuPresenting {
     var categories: [Category] = []
     var meal: [Meal] = []
-    var category: String = ""
+    var category: String = "Beef"
     weak var controller: (UIViewController & IViewControllers)?
     let network: NetworkService
     

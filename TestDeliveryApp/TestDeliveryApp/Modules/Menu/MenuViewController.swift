@@ -138,7 +138,6 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
         }
         let cellModel = MealTableViewCellFactory.cellModel(presenter.meal[indexPath.row])
         cell.config(with: cellModel)
-        presenter.meal.sort{ $0.strMeal < $1.strMeal}
         return cell
     }
     
