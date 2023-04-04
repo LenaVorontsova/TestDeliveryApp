@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		78891746AB698A9447538097 /* Pods_TestDeliveryApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3794F3606F87FB192999C86A /* Pods_TestDeliveryApp.framework */; };
+		845CB9B829DC71B2002BD993 /* MenuViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845CB9B729DC71B2002BD993 /* MenuViewController+TableView.swift */; };
+		845CB9BA29DC71D5002BD993 /* MenuViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845CB9B929DC71D5002BD993 /* MenuViewController+CollectionView.swift */; };
 		84E112F929DC43D9007A9056 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E112F829DC43D9007A9056 /* AppDelegate.swift */; };
 		84E1130229DC43DA007A9056 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E1130129DC43DA007A9056 /* Assets.xcassets */; };
 		84E1130529DC43DA007A9056 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E1130329DC43DA007A9056 /* LaunchScreen.storyboard */; };
@@ -29,11 +31,14 @@
 		84E1133429DC4872007A9056 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1133329DC4872007A9056 /* NetworkService.swift */; };
 		84E1133629DC4892007A9056 /* StartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1133529DC4892007A9056 /* StartService.swift */; };
 		84E1133829DC4B37007A9056 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1133729DC4B37007A9056 /* CategoriesCollectionViewCell.swift */; };
+		84E1133B29DC5F1A007A9056 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1133A29DC5F1A007A9056 /* MealTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2CD9DF40C210F58270516DD1 /* Pods-TestDeliveryApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestDeliveryApp.release.xcconfig"; path = "Target Support Files/Pods-TestDeliveryApp/Pods-TestDeliveryApp.release.xcconfig"; sourceTree = "<group>"; };
 		3794F3606F87FB192999C86A /* Pods_TestDeliveryApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestDeliveryApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		845CB9B729DC71B2002BD993 /* MenuViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuViewController+TableView.swift"; sourceTree = "<group>"; };
+		845CB9B929DC71D5002BD993 /* MenuViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		84E112F529DC43D9007A9056 /* TestDeliveryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestDeliveryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E112F829DC43D9007A9056 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84E1130129DC43DA007A9056 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +62,7 @@
 		84E1133329DC4872007A9056 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		84E1133529DC4892007A9056 /* StartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartService.swift; sourceTree = "<group>"; };
 		84E1133729DC4B37007A9056 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		84E1133A29DC5F1A007A9056 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		E9720291103F6A62F37B06FD /* Pods-TestDeliveryApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestDeliveryApp.debug.xcconfig"; path = "Target Support Files/Pods-TestDeliveryApp/Pods-TestDeliveryApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +99,7 @@
 		84E112F729DC43D9007A9056 /* TestDeliveryApp */ = {
 			isa = PBXGroup;
 			children = (
+				84E1133C29DC716B007A9056 /* Extensions */,
 				84E1130F29DC44D6007A9056 /* Constants */,
 				84E1130E29DC44CE007A9056 /* Models */,
 				84E1130D29DC44C5007A9056 /* Modules */,
@@ -166,6 +173,7 @@
 		84E1131E29DC45E7007A9056 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				84E1133929DC5F07007A9056 /* TableCell */,
 				84E1132A29DC46B7007A9056 /* CollectionsCells */,
 				84E1132D29DC476F007A9056 /* MenuBuilder.swift */,
 				84E1132F29DC478A007A9056 /* MenuPresenter.swift */,
@@ -189,6 +197,23 @@
 				84E1133729DC4B37007A9056 /* CategoriesCollectionViewCell.swift */,
 			);
 			path = CollectionsCells;
+			sourceTree = "<group>";
+		};
+		84E1133929DC5F07007A9056 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				84E1133A29DC5F1A007A9056 /* MealTableViewCell.swift */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
+		84E1133C29DC716B007A9056 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				845CB9B729DC71B2002BD993 /* MenuViewController+TableView.swift */,
+				845CB9B929DC71D5002BD993 /* MenuViewController+CollectionView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8F5E581006A7CDBBC04CEF42 /* Frameworks */ = {
@@ -322,10 +347,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845CB9BA29DC71D5002BD993 /* MenuViewController+CollectionView.swift in Sources */,
 				84E1131529DC453D007A9056 /* Errors.swift in Sources */,
 				84E1132729DC467D007A9056 /* ContactsViewController.swift in Sources */,
 				84E112F929DC43D9007A9056 /* AppDelegate.swift in Sources */,
 				84E1132529DC465E007A9056 /* CartViewController.swift in Sources */,
+				84E1133B29DC5F1A007A9056 /* MealTableViewCell.swift in Sources */,
 				84E1131729DC4557007A9056 /* Categories.swift in Sources */,
 				84E1133429DC4872007A9056 /* NetworkService.swift in Sources */,
 				84E1131B29DC456B007A9056 /* MealDetails.swift in Sources */,
@@ -336,6 +363,7 @@
 				84E1132E29DC476F007A9056 /* MenuBuilder.swift in Sources */,
 				84E1133629DC4892007A9056 /* StartService.swift in Sources */,
 				84E1132129DC45FB007A9056 /* IViewControllers.swift in Sources */,
+				845CB9B829DC71B2002BD993 /* MenuViewController+TableView.swift in Sources */,
 				84E1131329DC4518007A9056 /* MenuConstants.swift in Sources */,
 				84E1131929DC4561007A9056 /* Meal.swift in Sources */,
 				84E1132C29DC46D4007A9056 /* BannersCollectionViewCell.swift in Sources */,
