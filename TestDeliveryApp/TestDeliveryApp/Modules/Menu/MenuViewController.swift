@@ -38,6 +38,7 @@ class MenuViewController: UIViewController, IViewControllers {
     private var mealsTableView: UITableView = {
         var table = UITableView()
         table.backgroundColor = .white
+        table.layer.cornerRadius = 20
         return table
     }()
     
@@ -123,12 +124,12 @@ class MenuViewController: UIViewController, IViewControllers {
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(513)
         }
         categoriesCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(225)
+            $0.top.equalToSuperview().inset(230)
             $0.trailing.leading.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(527)
+            $0.bottom.equalToSuperview().inset(522)
         }
         mealsTableView.snp.makeConstraints { 
-            $0.top.equalToSuperview().inset(264)
+            $0.top.equalToSuperview().inset(280)
             $0.trailing.leading.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(0)
         }
@@ -153,6 +154,7 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
         cell.config(with: cellModel)
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
@@ -197,7 +199,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView.isEqual(bannersCollectionView) {
             return CGSize(width: 300, height: 112)
         } else {
-            return CGSize(width: 88, height: 32)
+            return CGSize(width: 100, height: 32)
         }
     }
 }

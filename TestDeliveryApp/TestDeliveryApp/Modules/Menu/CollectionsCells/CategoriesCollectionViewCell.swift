@@ -43,7 +43,8 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
     private func configureContstrains() {
         addSubview(collectionLabel)
         collectionLabel.snp.makeConstraints {
-            $0.leading.trailing.top.bottom.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(25)
         }
     }
 }
