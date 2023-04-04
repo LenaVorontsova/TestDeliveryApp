@@ -23,7 +23,6 @@ final class MenuPresenter: MenuPresenting {
     var categories = [Category]()
     var meal: [Meal] = []
     var selectedCategory: String = ""
-    // var category: String = "Beef"
     weak var controller: (UIViewController & IViewControllers)?
     let network: NetworkService
     
@@ -72,7 +71,6 @@ final class MenuPresenter: MenuPresenting {
     func updateInfoMeals(meal: MealData) {
         DispatchQueue.main.async {
             self.meal = meal.meals
-            // self.meal.append(contentsOf: meal.meals)
             self.controller?.reloadTable()
         }
     }

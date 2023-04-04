@@ -18,6 +18,16 @@ enum MenuConstants {
     static let downLead = 85
     
     static let bannersTop = 24
+    static let bannersBottom = 513
     
-    static let stackSpacing = 24
+    static let categoriesTop = 230
+    static let categoriesBottom = 522
+    
+    static let mealsTableTop = 280
+    static let mealsTableBottom = 0
+    
+    static let collectionViewWidth1 = 300
+    static let collectionViewWidth2 = 100
+    static let collectionViewHeight1 = 112
+    static let collectionViewHeight2 = 32
 }

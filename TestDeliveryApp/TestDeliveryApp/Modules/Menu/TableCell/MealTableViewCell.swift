@@ -61,14 +61,14 @@ final class MealTableViewCell: UITableViewCell {
         contentView.addSubview(tableImage)
         contentView.addSubview(strMealLabel)
         tableImage.snp.makeConstraints {
-            $0.height.width.equalTo(132)
+            $0.height.width.equalTo(TableCellConstants.heightImage)
             $0.top.bottom.equalToSuperview().inset(TableCellConstants.topBottomImage)
             $0.leading.equalToSuperview().inset(TableCellConstants.leadImage)
         }
         strMealLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(TableCellConstants.strLabelLeadTop)
             $0.leading.equalTo(tableImage.safeAreaLayoutGuide.snp.trailing).offset(TableCellConstants.strLabelLeadTop)
-            $0.trailing.equalToSuperview().inset(24)
+            $0.trailing.equalToSuperview().inset(TableCellConstants.strMealLabelTrail)
         }
     }
 }

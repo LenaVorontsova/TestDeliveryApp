@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-var whichCellSelect : String = "Dessert"
+var whichCellSelect : String = ""
 
 class MenuViewController: UIViewController, IViewControllers {
     private var cityTitle: UILabel = {
@@ -122,17 +122,17 @@ class MenuViewController: UIViewController, IViewControllers {
             $0.top.equalTo(cityTitle.safeAreaLayoutGuide.snp.bottom).offset(-BannersConstant.bannerTop)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(513)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(MenuConstants.bannersBottom)
         }
         categoriesCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(230)
+            $0.top.equalToSuperview().inset(MenuConstants.categoriesTop)
             $0.trailing.leading.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(522)
+            $0.bottom.equalToSuperview().inset(MenuConstants.categoriesBottom)
         }
         mealsTableView.snp.makeConstraints { 
-            $0.top.equalToSuperview().inset(280)
+            $0.top.equalToSuperview().inset(MenuConstants.mealsTableTop)
             $0.trailing.leading.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(0)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(MenuConstants.mealsTableBottom)
         }
     }
             
@@ -200,9 +200,13 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView.isEqual(bannersCollectionView) {
-            return CGSize(width: 300, height: 112)
+            return CGSize(
+                width: MenuConstants.collectionViewWidth1,
+                height: MenuConstants.collectionViewHeight1)
         } else {
-            return CGSize(width: 100, height: 32)
+            return CGSize(
+                width: MenuConstants.collectionViewWidth2,
+                height: MenuConstants.collectionViewHeight2)
         }
     }
 }

@@ -59,7 +59,7 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
         addSubview(collectionLabel)
         collectionLabel.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(25)
+            $0.leading.trailing.equalToSuperview().inset(BannersConstant.categOffset)
         }
     }
 }

@@ -12,4 +12,6 @@ enum BannersConstant {
     static let bannerHeight = 150
     static let bannerTop = 24
     static let bannerOffset = 16
+    
+    static let categOffset = 25
 }
