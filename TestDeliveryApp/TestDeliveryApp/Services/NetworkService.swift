@@ -60,11 +60,8 @@ final class NetworkService {
                 completed(.success(downloadedMeals))
             }
             catch let error as NSError {
-                        print("Could not fetch. \(error), \(error.userInfo)")
-                    }
-//            catch {
-//                print("Error Parsing Meals JSON")
-//            }
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
             
         }
         task.resume()

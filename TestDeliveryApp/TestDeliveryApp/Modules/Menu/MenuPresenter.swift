@@ -16,7 +16,8 @@ protocol MenuPresenting: AnyObject {
 }
 
 final class MenuPresenter: MenuPresenting {
-    var categories: [Category] = []
+    private var categoriesTest: [Category] = []
+    var categories = [Category]()
     var meal: [Meal] = []
     var category: String = "Beef"
     weak var controller: (UIViewController & IViewControllers)?
@@ -27,7 +28,7 @@ final class MenuPresenter: MenuPresenting {
     }
     
     func loadData() {
-//        self.getInfoCategories()
+        self.getInfoCategories()
         self.getInfoMeals()
         self.controller?.reloadTable()
     }
@@ -37,7 +38,6 @@ final class MenuPresenter: MenuPresenting {
             guard let self = self else { return }
             switch result {
                 case .success(let categories):
-//                self.categories = categories.categories
                     self.updateInfoCategories(categories: categories)
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -50,7 +50,6 @@ final class MenuPresenter: MenuPresenting {
             guard let self = self else { return }
             switch result {
                 case .success(let meal):
-//                    self.meal = meal.meals
                     self.updateInfoMeals(meal: meal)
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -60,15 +59,14 @@ final class MenuPresenter: MenuPresenting {
     
     func updateInfoCategories(categories: CategoriesData) {
         DispatchQueue.main.async {
-            // self.categories = categories.categories
-            self.categories.append(contentsOf: categories.categories)
-            // self.controller?.reloadTable()
+            self.categoriesTest.append(contentsOf: categories.categories)
+            self.categories = self.categoriesTest
+            self.controller?.reloadTable()
         }
     }
     
     func updateInfoMeals(meal: MealData) {
         DispatchQueue.main.async {
-            // self.meal = meal.meals
             self.meal.append(contentsOf: meal.meals)
             self.controller?.reloadTable()
         }

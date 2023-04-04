@@ -71,25 +71,31 @@ class MenuViewController: UIViewController, IViewControllers {
         self.configureConstraints()
         
         presenter.loadData()
-//        presenter.getInfoCategories()
-//        presenter.getInfoMeals()
         
     }
         
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let indexPath = IndexPath(row: bannersCollectionView.numberOfSections, section: 0)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        let indexPath = IndexPath(row: bannersCollectionView.numberOfSections, section: 0)
         self.bannersCollectionView.scrollToItem(at: indexPath, at: .left, animated: false)
+        let indexPathCat = IndexPath(row: categoriesCollectionView.numberOfSections, section: 0)
+        self.categoriesCollectionView.scrollToItem(at: indexPathCat, at: .left, animated: false)
     }
         
     private func setupViews() {
         self.bannersCollectionView.showsHorizontalScrollIndicator = false
+        self.categoriesCollectionView.showsHorizontalScrollIndicator = false
             
         self.bannersCollectionView.dataSource = self
+        self.categoriesCollectionView.dataSource = self
         self.bannersCollectionView.delegate = self
+        self.categoriesCollectionView.delegate = self
+        
         self.bannersCollectionView.register(BannersCollectionViewCell.self,
                                                 forCellWithReuseIdentifier: BannersCollectionViewCell.collectionCellId)
+        self.categoriesCollectionView.register(CategoriesCollectionViewCell.self,
+                                               forCellWithReuseIdentifier: CategoriesCollectionViewCell.collectionId)
     }
         
     private func setCells(cells: [UIImage]) {
@@ -100,6 +106,7 @@ class MenuViewController: UIViewController, IViewControllers {
         view.addSubview(cityTitle)
         view.addSubview(downImage)
         view.addSubview(bannersCollectionView)
+        view.addSubview(categoriesCollectionView)
         view.addSubview(mealsTableView)
         cityTitle.snp.makeConstraints {
             $0.top.equalToSuperview().inset(MenuConstants.cityTop)
@@ -110,14 +117,18 @@ class MenuViewController: UIViewController, IViewControllers {
             $0.leading.equalToSuperview().inset(MenuConstants.downLead)
         }
         bannersCollectionView.snp.makeConstraints {
-            $0.top.equalTo(cityTitle.safeAreaLayoutGuide.snp.bottom).offset(BannersConstant.bannerTop)
+            $0.top.equalTo(cityTitle.safeAreaLayoutGuide.snp.bottom).offset(-BannersConstant.bannerTop)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(513)
-//            $0.bottom.equalTo(mealsTableView.safeAreaLayoutGuide.snp.top).offset(-TableViewConstants.tableTop)
+        }
+        categoriesCollectionView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(225)
+            $0.trailing.leading.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(527)
         }
         mealsTableView.snp.makeConstraints { 
-            $0.top.equalToSuperview().inset(268)
+            $0.top.equalToSuperview().inset(264)
             $0.trailing.leading.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(0)
         }
@@ -125,6 +136,7 @@ class MenuViewController: UIViewController, IViewControllers {
             
     func reloadTable() {
         self.mealsTableView.reloadData()
+        self.categoriesCollectionView.reloadData()
     }
 }
 
@@ -143,17 +155,22 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
+        return 150
     }
 }
 
 extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.numberOfItems
+        numberOfItems
+//        if collectionView.isEqual(self.bannersCollectionView) {
+//            return self.numberOfItems
+//        } else {
+//            return presenter.categories.count
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        if collectionView.isEqual(self.bannersCollectionView) {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: BannersCollectionViewCell.collectionCellId,
                 for: indexPath) as? BannersCollectionViewCell else {
@@ -161,10 +178,27 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             cell.collectionImageView.image = cells[indexPath.row % cells.count]
             return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CategoriesCollectionViewCell.collectionId,
+                for: indexPath) as? CategoriesCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            if presenter.categories.count != 0 {
+                cell.collectionLabel.text = presenter.categories[indexPath.row % presenter.categories.count].strCategory
+            } else {
+                cell.collectionLabel.text = "Category"
+            }
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 200)
+        if collectionView.isEqual(bannersCollectionView) {
+            return CGSize(width: 300, height: 112)
+        } else {
+            return CGSize(width: 88, height: 32)
+        }
     }
 }
 
