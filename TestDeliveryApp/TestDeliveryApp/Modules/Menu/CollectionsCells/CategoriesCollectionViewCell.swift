@@ -18,6 +18,21 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    override var isSelected: Bool {
+        didSet {
+            self.contentView.backgroundColor = isSelected ? UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.2) : .clear
+            self.collectionLabel.textColor = isSelected ? UIColor(
+                red: 0.992,
+                green: 0.227,
+                blue: 0.412,
+                alpha: 1) : UIColor(
+                    red: 0.992,
+                    green: 0.227,
+                    blue: 0.412,
+                    alpha: 0.4)
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -29,7 +44,7 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
     
     private func setupUI() {
         contentView.backgroundColor = .clear
-        contentView.layer.cornerRadius =  20
+        contentView.layer.cornerRadius =  16
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor(red: 0.992,
                                                 green: 0.227,

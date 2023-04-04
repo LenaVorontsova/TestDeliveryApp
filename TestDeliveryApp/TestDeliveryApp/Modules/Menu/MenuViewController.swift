@@ -162,13 +162,10 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         numberOfItems
-//        if collectionView.isEqual(self.bannersCollectionView) {
-//            return self.numberOfItems
-//        } else {
-//            return presenter.categories.count
-//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
