@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         startService = StartService(window: window)
         return true
-        return true
     }
 }
 

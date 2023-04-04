@@ -28,6 +28,14 @@ class MenuViewController: UIViewController, IViewControllers {
         collectionView.backgroundColor = .clear
         return collectionView
     }()
+    private var categoriesCollectionView: UICollectionView = {
+        let viewLayout = UICollectionViewFlowLayout()
+        viewLayout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
+    
     var cells = [UIImage]()
     private let images: [UIImage] = [UIImage(named: "banner1")!,
                                      UIImage(named: "banner2")!,
@@ -45,9 +53,8 @@ class MenuViewController: UIViewController, IViewControllers {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-            
         presenter.getInfoCategories()
-            
+        
         setupViews()
         setCells(cells: images)
         self.view.backgroundColor = UIColor(red: 0.953, green: 0.961, blue: 0.976, alpha: 1)
@@ -57,6 +64,7 @@ class MenuViewController: UIViewController, IViewControllers {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let indexPath = IndexPath(row: bannersCollectionView.numberOfSections, section: 0)
+        
         self.bannersCollectionView.scrollToItem(at: indexPath, at: .left, animated: false)
     }
         
@@ -86,11 +94,10 @@ class MenuViewController: UIViewController, IViewControllers {
             $0.leading.equalToSuperview().inset(MenuConstants.downLead)
         }
         bannersCollectionView.snp.makeConstraints {
-            $0.width.equalTo(BannersConstant.bannerWidth)
-            $0.height.equalTo(BannersConstant.bannerHeight)
             $0.top.equalTo(cityTitle.safeAreaLayoutGuide.snp.bottom).offset(BannersConstant.bannerTop)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-513)
         }
     }
             
@@ -105,13 +112,14 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: BannersCollectionViewCell.collectionCellId,
-            for: indexPath) as? BannersCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        cell.collectionImageView.image = cells[indexPath.row % cells.count]
-        return cell
+        
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: BannersCollectionViewCell.collectionCellId,
+                for: indexPath) as? BannersCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            cell.collectionImageView.image = cells[indexPath.row % cells.count]
+            return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class BannersCollectionViewCell: UICollectionViewCell {
-    static let collectionCellId = "BannersCollectionViewCell"
+    static let collectionCellId = "Banners"
         
     lazy var collectionImageView: UIImageView = {
         let image = UIImageView()
