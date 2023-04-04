@@ -16,6 +16,8 @@
 		84E1131729DC4557007A9056 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1131629DC4557007A9056 /* Categories.swift */; };
 		84E1131929DC4561007A9056 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1131829DC4561007A9056 /* Meal.swift */; };
 		84E1131B29DC456B007A9056 /* MealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1131A29DC456B007A9056 /* MealDetails.swift */; };
+		84E1132129DC45FB007A9056 /* IViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1132029DC45FB007A9056 /* IViewControllers.swift */; };
+		84E1132329DC4606007A9056 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1132229DC4606007A9056 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		84E1131629DC4557007A9056 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		84E1131829DC4561007A9056 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		84E1131A29DC456B007A9056 /* MealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetails.swift; sourceTree = "<group>"; };
+		84E1132029DC45FB007A9056 /* IViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IViewControllers.swift; sourceTree = "<group>"; };
+		84E1132229DC4606007A9056 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,12 @@
 		84E1130D29DC44C5007A9056 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				84E1131F29DC45EE007A9056 /* Profile */,
+				84E1131E29DC45E7007A9056 /* Menu */,
+				84E1131D29DC45DF007A9056 /* Contacts */,
+				84E1131C29DC45CB007A9056 /* Cart */,
+				84E1132029DC45FB007A9056 /* IViewControllers.swift */,
+				84E1132229DC4606007A9056 /* TabBarViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -106,6 +116,34 @@
 				84E1131229DC4518007A9056 /* MenuConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		84E1131C29DC45CB007A9056 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		84E1131D29DC45DF007A9056 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		84E1131E29DC45E7007A9056 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		84E1131F29DC45EE007A9056 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +220,8 @@
 				84E112F929DC43D9007A9056 /* AppDelegate.swift in Sources */,
 				84E1131729DC4557007A9056 /* Categories.swift in Sources */,
 				84E1131B29DC456B007A9056 /* MealDetails.swift in Sources */,
+				84E1132329DC4606007A9056 /* TabBarViewController.swift in Sources */,
+				84E1132129DC45FB007A9056 /* IViewControllers.swift in Sources */,
 				84E1131329DC4518007A9056 /* MenuConstants.swift in Sources */,
 				84E1131929DC4561007A9056 /* Meal.swift in Sources */,
 				84E1131129DC44F2007A9056 /* BannersConstant.swift in Sources */,
