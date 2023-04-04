@@ -26,6 +26,8 @@
 		84E1132E29DC476F007A9056 /* MenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1132D29DC476F007A9056 /* MenuBuilder.swift */; };
 		84E1133029DC478A007A9056 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1132F29DC478A007A9056 /* MenuPresenter.swift */; };
 		84E1133229DC47A7007A9056 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1133129DC47A7007A9056 /* MenuViewController.swift */; };
+		84E1133429DC4872007A9056 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1133329DC4872007A9056 /* NetworkService.swift */; };
+		84E1133629DC4892007A9056 /* StartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1133529DC4892007A9056 /* StartService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		84E1132D29DC476F007A9056 /* MenuBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBuilder.swift; sourceTree = "<group>"; };
 		84E1132F29DC478A007A9056 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
 		84E1133129DC47A7007A9056 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		84E1133329DC4872007A9056 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		84E1133529DC4892007A9056 /* StartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartService.swift; sourceTree = "<group>"; };
 		E9720291103F6A62F37B06FD /* Pods-TestDeliveryApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestDeliveryApp.debug.xcconfig"; path = "Target Support Files/Pods-TestDeliveryApp/Pods-TestDeliveryApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				84E1131429DC453D007A9056 /* Errors.swift */,
+				84E1133329DC4872007A9056 /* NetworkService.swift */,
+				84E1133529DC4892007A9056 /* StartService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -111,9 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				84E1131F29DC45EE007A9056 /* Profile */,
-				84E1131E29DC45E7007A9056 /* Menu */,
 				84E1131D29DC45DF007A9056 /* Contacts */,
 				84E1131C29DC45CB007A9056 /* Cart */,
+				84E1131E29DC45E7007A9056 /* Menu */,
 				84E1132029DC45FB007A9056 /* IViewControllers.swift */,
 				84E1132229DC4606007A9056 /* TabBarViewController.swift */,
 			);
@@ -318,12 +324,14 @@
 				84E112F929DC43D9007A9056 /* AppDelegate.swift in Sources */,
 				84E1132529DC465E007A9056 /* CartViewController.swift in Sources */,
 				84E1131729DC4557007A9056 /* Categories.swift in Sources */,
+				84E1133429DC4872007A9056 /* NetworkService.swift in Sources */,
 				84E1131B29DC456B007A9056 /* MealDetails.swift in Sources */,
 				84E1132929DC469E007A9056 /* ProfileViewController.swift in Sources */,
 				84E1133229DC47A7007A9056 /* MenuViewController.swift in Sources */,
 				84E1132329DC4606007A9056 /* TabBarViewController.swift in Sources */,
 				84E1133029DC478A007A9056 /* MenuPresenter.swift in Sources */,
 				84E1132E29DC476F007A9056 /* MenuBuilder.swift in Sources */,
+				84E1133629DC4892007A9056 /* StartService.swift in Sources */,
 				84E1132129DC45FB007A9056 /* IViewControllers.swift in Sources */,
 				84E1131329DC4518007A9056 /* MenuConstants.swift in Sources */,
 				84E1131929DC4561007A9056 /* Meal.swift in Sources */,
