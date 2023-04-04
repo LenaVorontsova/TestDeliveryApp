@@ -10,16 +10,20 @@ import UIKit
 protocol MenuPresenting: AnyObject {
     var categories: [Category] { get set }
     var meal: [Meal] { get set }
+    var selectedCategory: String { get set }
     func getInfoCategories()
-    func getInfoMeals()
+    func getInfoMeals(for category: String)
     func loadData()
+    func updateSelectedCategory(_ category: String)
 }
 
 final class MenuPresenter: MenuPresenting {
+    
     private var categoriesTest: [Category] = []
     var categories = [Category]()
     var meal: [Meal] = []
-    var category: String = "Beef"
+    var selectedCategory: String = ""
+    // var category: String = "Beef"
     weak var controller: (UIViewController & IViewControllers)?
     let network: NetworkService
     
@@ -29,7 +33,7 @@ final class MenuPresenter: MenuPresenting {
     
     func loadData() {
         self.getInfoCategories()
-        self.getInfoMeals()
+        self.getInfoMeals(for: selectedCategory)
         self.controller?.reloadTable()
     }
     
@@ -45,16 +49,16 @@ final class MenuPresenter: MenuPresenting {
         }
     }
     
-    func getInfoMeals() {
-        network.getMeals(category: category) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
+    func getInfoMeals(for category: String) {
+            network.getMeals(category: category) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
                 case .success(let meal):
                     self.updateInfoMeals(meal: meal)
                 case .failure(let error):
                     print(error.localizedDescription)
+                }
             }
-        }
     }
     
     func updateInfoCategories(categories: CategoriesData) {
@@ -67,8 +71,14 @@ final class MenuPresenter: MenuPresenting {
     
     func updateInfoMeals(meal: MealData) {
         DispatchQueue.main.async {
-            self.meal.append(contentsOf: meal.meals)
+            self.meal = meal.meals
+            // self.meal.append(contentsOf: meal.meals)
             self.controller?.reloadTable()
         }
+    }
+    
+    func updateSelectedCategory(_ category: String) {
+        self.selectedCategory = category
+        self.getInfoMeals(for: category)
     }
 }

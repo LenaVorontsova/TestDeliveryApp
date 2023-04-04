@@ -26,19 +26,13 @@ protocol ReusableView: AnyObject {
 final class MealTableViewCell: UITableViewCell {
     lazy var tableImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "tableImage")
         return image
     }()
     private lazy var strMealLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17)
         label.textColor = .black
-        return label
-    }()
-    private lazy var strMealThumbLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 13)
-        label.textColor = UIColor(red: 0.665, green: 0.668, blue: 0.679, alpha: 1)
+        label.numberOfLines = 5
         return label
     }()
     
@@ -54,25 +48,27 @@ final class MealTableViewCell: UITableViewCell {
     
     func config(with model: MealTableViewCellModel) {
         strMealLabel.text = model.strMeal
-        strMealThumbLabel.text = model.strMealThumb
+        let url = URL(string: model.strMealThumb!)
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async { [self] in
+                tableImage.image = UIImage(data: data!)
+            }
+        }
     }
     
     func configureConstraints() {
         contentView.addSubview(tableImage)
         contentView.addSubview(strMealLabel)
-        contentView.addSubview(strMealThumbLabel)
         tableImage.snp.makeConstraints {
+            $0.height.width.equalTo(132)
             $0.top.bottom.equalToSuperview().inset(TableCellConstants.topBottomImage)
             $0.leading.equalToSuperview().inset(TableCellConstants.leadImage)
         }
         strMealLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(TableCellConstants.strLabelLeadTop)
             $0.leading.equalTo(tableImage.safeAreaLayoutGuide.snp.trailing).offset(TableCellConstants.strLabelLeadTop)
-        }
-        strMealThumbLabel.snp.makeConstraints {
-            $0.top.equalTo(strMealLabel.safeAreaLayoutGuide.snp.bottom).offset(TableCellConstants.strMealThumbLabelTop)
-            $0.leading.equalTo(tableImage.safeAreaLayoutGuide.snp.trailing).offset(TableCellConstants.strLabelLeadTop)
-            $0.trailing.equalToSuperview().inset(TableCellConstants.strMealThumbLabelTrail)
+            $0.trailing.equalToSuperview().inset(24)
         }
     }
 }

@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 
+var whichCellSelect : String = "Dessert"
+
 class MenuViewController: UIViewController, IViewControllers {
     private var cityTitle: UILabel = {
         var label = UILabel()
@@ -72,7 +74,6 @@ class MenuViewController: UIViewController, IViewControllers {
         self.configureConstraints()
         
         presenter.loadData()
-        
     }
         
     override func viewDidAppear(_ animated: Bool) {
@@ -155,17 +156,22 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 170
     }
 }
 
 extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.isEqual(categoriesCollectionView) {
+            whichCellSelect = presenter.categories[indexPath.row % presenter.categories.count].strCategory
+            presenter.updateSelectedCategory(whichCellSelect)
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        numberOfItems
+            return numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -186,7 +192,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             if presenter.categories.count != 0 {
                 cell.collectionLabel.text = presenter.categories[indexPath.row % presenter.categories.count].strCategory
             } else {
-                cell.collectionLabel.text = "Category"
+                cell.collectionLabel.text = "Dessert"
             }
             return cell
         }
