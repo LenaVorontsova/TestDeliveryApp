@@ -51,7 +51,8 @@ final class NetworkService {
                 print("Something is wrong!")
                 return
             }
-            print("Downloaded Meals")
+            let str = String(decoding: data, as: UTF8.self)
+            print(str)
             
             do {
                 let decoder = JSONDecoder()

@@ -113,10 +113,11 @@ class MenuViewController: UIViewController, IViewControllers {
             $0.top.equalTo(cityTitle.safeAreaLayoutGuide.snp.bottom).offset(BannersConstant.bannerTop)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.bottom.equalTo(mealsTableView.safeAreaLayoutGuide.snp.top).offset(-TableViewConstants.tableTop)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(513)
+//            $0.bottom.equalTo(mealsTableView.safeAreaLayoutGuide.snp.top).offset(-TableViewConstants.tableTop)
         }
         mealsTableView.snp.makeConstraints { 
-            $0.top.equalTo(bannersCollectionView.safeAreaLayoutGuide.snp.bottom).offset(TableViewConstants.tableTop)
+            $0.top.equalToSuperview().inset(268)
             $0.trailing.leading.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(0)
         }
@@ -142,7 +143,7 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 180
     }
 }
 
