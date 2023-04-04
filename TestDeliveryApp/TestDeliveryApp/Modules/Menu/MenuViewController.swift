@@ -37,6 +37,7 @@ class MenuViewController: UIViewController, IViewControllers {
     }()
     private var mealsTableView: UITableView = {
         var table = UITableView()
+        table.backgroundColor = .white
         return table
     }()
     
@@ -58,14 +59,21 @@ class MenuViewController: UIViewController, IViewControllers {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.getInfoCategories()
+        
         mealsTableView.delegate = self
         mealsTableView.dataSource = self
+        self.mealsTableView.register(MealTableViewCell.self,
+                                     forCellReuseIdentifier: MealTableViewCell.identifier)
         
         setupViews()
         setCells(cells: images)
         self.view.backgroundColor = UIColor(red: 0.953, green: 0.961, blue: 0.976, alpha: 1)
         self.configureConstraints()
+        
+        presenter.loadData()
+//        presenter.getInfoCategories()
+//        presenter.getInfoMeals()
+        
     }
         
     override func viewDidLayoutSubviews() {
@@ -92,6 +100,7 @@ class MenuViewController: UIViewController, IViewControllers {
         view.addSubview(cityTitle)
         view.addSubview(downImage)
         view.addSubview(bannersCollectionView)
+        view.addSubview(mealsTableView)
         cityTitle.snp.makeConstraints {
             $0.top.equalToSuperview().inset(MenuConstants.cityTop)
             $0.leading.equalToSuperview().inset(MenuConstants.cityLead)
@@ -104,7 +113,12 @@ class MenuViewController: UIViewController, IViewControllers {
             $0.top.equalTo(cityTitle.safeAreaLayoutGuide.snp.bottom).offset(BannersConstant.bannerTop)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-513)
+            $0.bottom.equalTo(mealsTableView.safeAreaLayoutGuide.snp.top).offset(-TableViewConstants.tableTop)
+        }
+        mealsTableView.snp.makeConstraints { 
+            $0.top.equalTo(bannersCollectionView.safeAreaLayoutGuide.snp.bottom).offset(TableViewConstants.tableTop)
+            $0.trailing.leading.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(0)
         }
     }
             
@@ -112,3 +126,45 @@ class MenuViewController: UIViewController, IViewControllers {
         self.mealsTableView.reloadData()
     }
 }
+
+extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.presenter.meal.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MealTableViewCell.identifier, for: indexPath) as? MealTableViewCell else {
+                return UITableViewCell()
+        }
+        let cellModel = MealTableViewCellFactory.cellModel(presenter.meal[indexPath.row])
+        cell.config(with: cellModel)
+        presenter.meal.sort{ $0.strMeal < $1.strMeal}
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+}
+
+extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        self.numberOfItems
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: BannersCollectionViewCell.collectionCellId,
+                for: indexPath) as? BannersCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            cell.collectionImageView.image = cells[indexPath.row % cells.count]
+            return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 300, height: 200)
+    }
+}
+

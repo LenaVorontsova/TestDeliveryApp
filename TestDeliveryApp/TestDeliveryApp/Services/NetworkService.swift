@@ -58,9 +58,12 @@ final class NetworkService {
                 let downloadedMeals = try decoder.decode(MealData.self, from: data)
                 completed(.success(downloadedMeals))
             }
-            catch {
-                print("Error Parsing Meals JSON")
-            }
+            catch let error as NSError {
+                        print("Could not fetch. \(error), \(error.userInfo)")
+                    }
+//            catch {
+//                print("Error Parsing Meals JSON")
+//            }
             
         }
         task.resume()

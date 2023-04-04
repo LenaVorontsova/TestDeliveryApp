@@ -8,16 +8,6 @@
 import UIKit
 import SnapKit
 
-enum TableCellConstants {
-    static let topBottomImage = 24
-    static let leadImage = 16
-    
-    static let strLabelLeadTop = 32
-    
-    static let strMealThumbLabelTop = 8
-    static let strMealThumbLabelTrail = 24
-}
-
 struct MealTableViewCellModel {
     let strMeal: String?
     let strMealThumb: String?

@@ -17,13 +17,13 @@ struct MealData: Codable {
 
 struct Meal: Codable {
     
-    let idMeal: String
     let strMeal: String
     let strMealThumb: String
+    let idMeal: String?
 
-    init(idMeal: String, strMeal: String, strMealThumb: String) {
-        self.idMeal = idMeal
+    init(strMeal: String, strMealThumb: String, idMeal: String) {
         self.strMeal = strMeal
         self.strMealThumb = strMealThumb
+        self.idMeal = idMeal
     }
 }
